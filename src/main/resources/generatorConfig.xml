@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--导入属性配置-->
+    <properties resource="application.properties"/>
+
+    <!--指定特定数据库的jdbc驱动jar包的位置-->
+    <classPathEntry location="D:\dev\maven\repository\mysql\mysql-connector-java\8.0.20\mysql-connector-java-8.0.20.jar"/>
+
+    <context id="default" targetRuntime="MyBatis3">
+        <!--        默认文件创建人-->
+        <property name="createBy" value="marblog"/>
+        <!--        lombok代替get/set方法-->
+        <!--        <plugin type="org.mybatis.generator.custom.plugins.LombokPlugin"/>-->
+        <!--        实现序列化接口-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!--        生成service和serviceImpl-->
+        <!--        <plugin type="org.mybatis.generator.custom.plugins.ServicePlugin"/>-->
+
+        <!-- optional，旨在创建class时，对注释进行控制 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://123.56.96.139:3306/mydata" userId="root"
+                        password="123456">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+
+        <!--        生成java实体类-->
+        <javaModelGenerator targetPackage="cn.marblog.bwcar.pojo"
+                            targetProject="src/main/java">
+
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否对model添加 构造函数 -->
+            <!--            <property name="constructorBased" value="true"/>-->
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true"/>
+            <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
+            <!--            <property name="immutable" value="false"/>-->
+        </javaModelGenerator>
+
+        <!--        生成mapper接口文件-->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--生成mapper.xml文件-->
+        <javaClientGenerator targetPackage="cn.marblog.bwcar.dao"
+                             targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--tableName:指定了表名
+            domainObjectName:指定了实体类的名称
+        -->
+        <!-- 要生成哪些表 -->
+        <table tableName="sys_menu" domainObjectName="SysMenu"/>
+        <table tableName="sys_role" domainObjectName="SysRole"/>
+        <table tableName="sys_user" domainObjectName="SysUser"></table>
+        <table tableName="sys_role_menu" domainObjectName="SysRoleMenu"></table>
+        <table tableName="sys_user_role" domainObjectName="SysUserRole"></table>
+        <table tableName="sys_config" domainObjectName="SysConfig"></table>
+        <table tableName="sys_log" domainObjectName="SysLog"></table>
+        <table tableName="schedule_job" domainObjectName="ScheduleJob"></table>
+        <table tableName="schedule_job_log" domainObjectName="ScheduleJobLog"></table>
+        <table tableName="activity" domainObjectName="Activity"></table>
+        <table tableName="activity_car" domainObjectName="ActivityCar"></table>
+        <table tableName="activity_category" domainObjectName="ActivityCategory"></table>
+        <table tableName="activity_channel" domainObjectName="ActivityChannel"></table>
+        <table tableName="activity_dealer" domainObjectName="ActivityDealer"></table>
+        <table tableName="activity_interface" domainObjectName="ActivityInterface"></table>
+        <table tableName="activity_key" domainObjectName="ActivityKey"></table>
+        <table tableName="activity_link" domainObjectName="ActivityLink"></table>
+        <table tableName="activity_pdata" domainObjectName="ActivityPdata"></table>
+        <table tableName="activity_tag" domainObjectName="ActivityTag"></table>
+        <table tableName="admin_menu_auth" domainObjectName="AdminMenuAuth"></table>
+        <table tableName="admin_role" domainObjectName="AdminRole"></table>
+        <table tableName="admin_role_menu" domainObjectName="AdminRoleMenu"></table>
+        <table tableName="admin_user" domainObjectName="AdminUser"></table>
+        <table tableName="admin_user_role" domainObjectName="AdminUserRole"></table>
+        <table tableName="area" domainObjectName="Area"></table>
+        <table tableName="article" domainObjectName="Article"></table>
+        <table tableName="article_action" domainObjectName="ArticleAction"></table>
+        <table tableName="article_category" domainObjectName="ArticleCategory"></table>
+        <table tableName="article_tag" domainObjectName="ArticleTag"></table>
+        <table tableName="car" domainObjectName="Car"></table>
+        <table tableName="car_brand" domainObjectName="CarBrand"></table>
+        <table tableName="car_image" domainObjectName="CarImage"></table>
+        <table tableName="car_make" domainObjectName="CarMake"></table>
+        <table tableName="car_model" domainObjectName="CarModel"></table>
+        <table tableName="car_model_image" domainObjectName="CarModelImage"></table>
+        <table tableName="car_select_list" domainObjectName="CarSelectList"></table>
+        <table tableName="choose_log" domainObjectName="ChooseLog"></table>
+        <table tableName="dict_answer" domainObjectName="DictAnswer"></table>
+        <table tableName="dict_brand_point" domainObjectName="DictBrandPoint"></table>
+        <table tableName="dict_country" domainObjectName="DictCountry"></table>
+        <table tableName="dict_model" domainObjectName="DictModel"></table>
+        <table tableName="dict_weight" domainObjectName="DictWeight"></table>
+        <table tableName="member" domainObjectName="Member"></table>
+        <table tableName="member_car" domainObjectName="MemberCar"></table>
+        <table tableName="member_fav" domainObjectName="MemberFav"></table>
+        <table tableName="member_login_log" domainObjectName="MemberLoginLog"></table>
+        <table tableName="member_point" domainObjectName="MemberPoint"></table>
+        <table tableName="member_profile" domainObjectName="MemberProfile"></table>
+        <table tableName="member_profile_log" domainObjectName="MemberProfileLog"></table>
+        <table tableName="member_tag" domainObjectName="MemberTag"></table>
+        <table tableName="member_token" domainObjectName="MemberToken"></table>
+        <table tableName="message" domainObjectName="Message"></table>
+        <table tableName="message_sendlog" domainObjectName="MessageSendlog"></table>
+        <table tableName="operate_log" domainObjectName="OperateLog"></table>
+        <table tableName="product" domainObjectName="Product"></table>
+        <table tableName="product_car" domainObjectName="ProductCar"></table>
+        <table tableName="product_car_activity" domainObjectName="ProductCarActivity"></table>
+        <table tableName="sdk_interface" domainObjectName="SdkInterface"></table>
+        <table tableName="sdk_interface_info" domainObjectName="SdkInterfaceInfo"></table>
+        <table tableName="sdk_interface_parm" domainObjectName="SdkInterfaceParm"></table>
+        <table tableName="sdk_interface_type" domainObjectName="SdkInterfaceType"></table>
+        <table tableName="sdk_interface_udparm" domainObjectName="SdkInterfaceUdparm"></table>
+        <table tableName="sdk_temp" domainObjectName="SdkTemp"></table>
+        <table tableName="tag" domainObjectName="Tag"></table>
+        <table tableName="tb_token" domainObjectName="TbToken"></table>
+        <table tableName="tb_user" domainObjectName="TbUser"></table>
+        <table tableName="visit_log" domainObjectName="VisitLog"></table>
+        <table tableName="visitor" domainObjectName="Visitor"></table>
+        <table tableName="car_param_type" domainObjectName="CarParamType"></table>
+        <table tableName="car_params" domainObjectName="CarParams"></table>
+        <table tableName="car_manufacturer" domainObjectName="CarManufacturer"></table>
+
+    </context>
+</generatorConfiguration>

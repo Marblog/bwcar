@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/plugins/bootstrap-table/bootstrap-table.min.css">
+    <script src="public/libs/jquery.min.js"></script>
+    <script src="public/libs/bootstrap.min.js"></script>
+    <script src="public/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="public/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+</head>
+<body>
+    <table id="table"></table>
+    <script>
+        $('#table').bootstrapTable({
+            columns: [{
+                field: 'id',
+                title: 'Item ID'
+            }, {
+                field: 'username',
+                title: 'Item Username'
+            }],
+            data: [{
+                id: 1,
+                username: 'Item 1'
+            }, {
+                id: 2,
+                username: 'Item 2'
+            }]
+        });
+    </script>
+</body>
+</html>
